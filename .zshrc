@@ -104,19 +104,25 @@ source $ZSH/oh-my-zsh.sh
 # Set personal aliases, overriding those provided by oh-my-zsh libs,
 # plugins, and themes. Aliases can be placed here, though oh-my-zsh
 # users are encouraged to define aliases within the ZSH_CUSTOM folder.
-# For a full list of active aliases, run `alias`.
-#
-# Example aliases
-# alias zshconfig="mate ~/.zshrc"
-# alias ohmyzsh="mate ~/.oh-my-zsh"
+
+# Aliases
+
+## Docker aliases
 alias dk="docker"
 alias dkc="docker compose"
-alias db.start="echo todo"
-alias git.config.jmc='git config user.name "Clement Gayet" && git config user.email "clement.gayet@jmc-aixmarseille.fr"'
+
 alias db.postgres.run="docker run -p 5432:5432 --name postgres-docker-instance -e POSTGRES_PASSWORD=postgres -d postgres:latest"
+alias db.postgres.start="docker start postgres-docker-instance"
 alias db.postgres.stop="docker stop postgres-docker-instance"
-alias db.posthres.rm="docker rm postgres-docker-instance"
-alias python="python3"
+alias db.postgres.remove="db.postgres.stop && docker rm postgres-docker-instance"
+
+## Git aliases
+alias git.config.jmc='git config user.name "Clement Gayet" && git config user.email "clement.gayet@jmc-aixmarseille.fr"'
+
+if [ -f ~/.profile ]; then
+    . ~/.profile
+fi
+
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 export NVM_DIR="$HOME/.nvm"
